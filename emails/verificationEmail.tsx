@@ -15,6 +15,8 @@ import {
   }
   
   export default function VerificationEmail({ username, otp }: VerificationEmailProps) {
+    console.log("inside verifyve")
+
     return (
       <Html lang="en" dir="ltr">
         <Head>

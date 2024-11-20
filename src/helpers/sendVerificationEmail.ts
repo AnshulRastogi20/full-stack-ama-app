@@ -12,7 +12,8 @@ export async function sendVerificationEmail
     
 
     try {
-
+        console.log("inside sendve")
+        // console.log(resend.emails)
         await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: email,

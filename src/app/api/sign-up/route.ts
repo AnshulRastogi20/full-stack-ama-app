@@ -4,7 +4,9 @@ import UserModel from "@/models/User";
 import bcrypt from "bcryptjs"
 
 
+console.log("just above db")
 export async function POST(request:Request) {
+
     await dbConnect()
 
     try {
@@ -49,9 +51,9 @@ export async function POST(request:Request) {
 
                 
                 // return Response.json({
-                    //     success: false,
-                    //     message:"Username is already taken"
-                    // },{status: 400})
+                //         success: false,
+                //         message:"User updated"
+                //     },{status: 400})
                 }
             }
         else{
@@ -89,7 +91,6 @@ export async function POST(request:Request) {
               { status: 500 }
             );
           }
-      
           return Response.json(
             {
               success: true,
