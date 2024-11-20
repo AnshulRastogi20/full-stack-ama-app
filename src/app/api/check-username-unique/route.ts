@@ -33,6 +33,7 @@ export async function GET(request:Request) {
         }
         
         const {username} = result.data
+        console.log(username)
         const existingVerfiedUser = await UserModel.findOne({username , isVerified:true})
         if(existingVerfiedUser){
             return Response.json({
