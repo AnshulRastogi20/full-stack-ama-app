@@ -22,10 +22,11 @@ export async function POST(request:Request) {
         const result = verifyQuerySchema.safeParse(otp)
         console.log(result)
         if (!result.success) {
+            console.log("error here")
             console.error(result.error.errors);
             return Response.json({
                 success:false,
-                message: "INVALID OTP"
+                message: (result.error.errors[0]).message
             },{
                 status: 400
             })
