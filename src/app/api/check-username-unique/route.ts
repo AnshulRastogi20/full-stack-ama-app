@@ -14,14 +14,15 @@ export async function GET(request:Request) {
 
     try {
         const {searchParams} = new URL(request.url)
+        console.log("inside check")
         const queryParam = {
             username: searchParams.get('username')
         }
+        console.log(queryParam)
 
         //validation with zod
         const result = UsernameQuerySchema.safeParse(queryParam)
-        console.log("PRINT ZOD RESULT -- ")
-        console.log(result)
+
 
         if (!result.success) {
             return Response.json({

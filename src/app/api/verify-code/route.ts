@@ -5,7 +5,7 @@ import { verifySchema } from "@/schemas/verifySchema";
 
 
 const verifyQuerySchema = z.object({
-    verifyCode: verifySchema
+    code: verifySchema
 })
 
 export async function POST(request:Request) {
@@ -14,26 +14,29 @@ export async function POST(request:Request) {
 
     try {
 
-        // const {username , verifyCode} = await request.json()
-        // const otp = {
-        //     verifyCode: verifyCode
-        // }
-        // const result = verifyQuerySchema.safeParse(otp)
+        const {username , verifyCode} = await request.json()
+        const otp = {
+            code: verifyCode
+        }
+        console.log(otp)
+        const result = verifyQuerySchema.safeParse(otp)
+        console.log(result)
+        if (!result.success) {
+            console.error(result.error.errors);
+            return Response.json({
+                success:false,
+                message: "INVALID OTP"
+            },{
+                status: 400
+            })
+        }
 
-        // if (!result.success) {
-        //     return Response.json({
-        //         success:false,
-        //         message: "INVALID OTP"
-        //     },{
-        //         status: 400
-        //     })
-        // }
-
-        // const { verifyCode: { code } } = result.data
+        const {code} = result.data
+        console.log(code)
 
 
-        const {username , code} = await request.json()
-        console.log("here")
+        // const {username , code} = await request.json()
+        // console.log("here")
 
         const decodedUsername = decodeURIComponent(username) // not necessary , we can use username directly as well
 
