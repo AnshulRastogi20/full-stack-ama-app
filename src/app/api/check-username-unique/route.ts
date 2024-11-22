@@ -34,7 +34,6 @@ export async function GET(request:Request) {
         }
         
         const {username} = result.data
-        console.log(username)
         const existingVerfiedUser = await UserModel.findOne({username , isVerified:true})
         if(existingVerfiedUser){
             return Response.json({
@@ -46,7 +45,7 @@ export async function GET(request:Request) {
         return Response.json({
             success: true,
             message:"Username is unique"
-        },{status: 400})
+        },{status: 201})
 
 
 
