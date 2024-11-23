@@ -4,7 +4,6 @@ import UserModel from "@/models/User";
 import bcrypt from "bcryptjs"
 
 
-console.log("just above db")
 export async function POST(request:Request) {
 
     await dbConnect()
