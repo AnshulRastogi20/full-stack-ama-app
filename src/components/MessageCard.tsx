@@ -3,7 +3,6 @@ import React from "react";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -39,20 +38,13 @@ const MessageCard = ({message , onMessageDelete} :MessageCardProps) => {
     toast({
       title: response.data.message
     })
-
     onMessageDelete(message._id)
-
   }
-
-
-
-
-
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
+        <CardTitle>{message.content}</CardTitle>
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive"><X className="w-5 h-5"/></Button>
@@ -62,7 +54,7 @@ const MessageCard = ({message , onMessageDelete} :MessageCardProps) => {
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
+                message and remove your data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -71,7 +63,6 @@ const MessageCard = ({message , onMessageDelete} :MessageCardProps) => {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-        <CardDescription>Card Description</CardDescription>
       </CardHeader>
       <CardContent></CardContent>
       <CardFooter></CardFooter>

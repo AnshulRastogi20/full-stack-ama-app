@@ -76,8 +76,6 @@ export async function GET(request:Request) {
     const session = await getServerSession(authOptions)
 
     const user = session?.user
-    console.log("PRINTING USER")
-    console.log(user)
     if(!session || !user){
         return Response.json({
             success:false,
