@@ -9,7 +9,7 @@ declare module 'next-auth'{
         username?:string
     }
 
-    interface Session{
+    interface Session{  
         user:{
             _id?: string;
             isVerified?: boolean;
